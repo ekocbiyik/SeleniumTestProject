@@ -22,13 +22,14 @@ public class LoginMember {
         driver = new FirefoxDriver();
         baseUrl = "http://www.kitapyurdu.com/";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        logger = new MyLog();
+//        logger = new MyLog();
 
     }
 
 
-    public void login(String username, String password){
+    public MyLog login(String username, String password, MyLog logger){
 
+        this.logger = logger;
         setUp();
 
         driver.get(baseUrl + "index.php?route=common/home");
@@ -48,10 +49,16 @@ public class LoginMember {
         driver.findElement(By.linkText("Oturum Aç")).click();
         logger.info("oturum aç tıklandı");
 
-        if (!driver.getPageSource().contains("Oturum Aç")){
+        try {
+            TimeUnit.SECONDS.sleep(30);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        if (!driver.getPageSource().contains("Hoş geldin ziyaretçi")){
 
             logger.pass("Login işlemi başarılı");
-            logger.endTest();
+//            logger.endTest();
             driver.quit();
 
         } else {
@@ -60,7 +67,7 @@ public class LoginMember {
 
                 logger.error("Login hatası");
                 logger.addScreenCapture(driver);
-                logger.endTest();
+//                logger.endTest();
 
                 throw new RuntimeException();
 
@@ -75,6 +82,7 @@ public class LoginMember {
             }
         }
 
+        return logger;
     }
 
 }

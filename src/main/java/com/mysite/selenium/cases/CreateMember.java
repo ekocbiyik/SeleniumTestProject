@@ -22,12 +22,13 @@ public class CreateMember {
         driver = new FirefoxDriver();
         baseUrl = "http://www.kitapyurdu.com/";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        logger = new MyLog();
+//        logger = new MyLog();
 
     }
 
-    public void create(String username, String password){
+    public MyLog create(String username, String password, MyLog logger){
 
+        this.logger = logger;
         setUp();
 
         driver.get(baseUrl);
@@ -79,7 +80,7 @@ public class CreateMember {
         if (driver.getTitle().equalsIgnoreCase("Adres Defteri")){
 
             logger.pass("Kullanıcı tanımlandı");
-            logger.endTest();
+//            logger.endTest();
             driver.quit();
 
         } else {
@@ -88,7 +89,7 @@ public class CreateMember {
 
                 logger.error("Kullanıcı zaten kayıtlı");
                 logger.addScreenCapture(driver);
-                logger.endTest();
+//                logger.endTest();
 
                 throw new RuntimeException();
 
@@ -103,6 +104,7 @@ public class CreateMember {
             }
         }
 
+        return logger;
     }
 
 }

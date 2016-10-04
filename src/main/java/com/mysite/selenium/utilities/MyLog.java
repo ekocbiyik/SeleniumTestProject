@@ -57,9 +57,9 @@ public class MyLog {
         String screenShotPath = destFilePath + "\\screenShots\\"+errorFileName+".png";
         try {
 
-            
+
             FileUtils.copyFile(source, new File(screenShotPath));
-            logger.log(LogStatus.INFO, "Hata görüntüsü2", logger.addScreenCapture(screenShotPath));
+            logger.log(LogStatus.INFO, "Hata görüntüsü", logger.addScreenCapture(screenShotPath));
 
         } catch (IOException e) {
             e.printStackTrace();

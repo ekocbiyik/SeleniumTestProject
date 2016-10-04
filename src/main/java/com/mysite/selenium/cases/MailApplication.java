@@ -1,9 +1,14 @@
 package com.mysite.selenium.cases;
 
+import com.mysite.selenium.utilities.MyLog;
+import com.mysite.selenium.utilities.ReportLogs;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by enbiya on 18.08.2016.
@@ -15,26 +20,31 @@ public class MailApplication {
 
     public static void main(String[] args) {
 
-        getUserPass();
+//        getUserPass();
 
         if (username.equals("") || password.equals("")){
 
-            username = "aliahmetmehmet"; //aliahmetmehmet987654321@yopmail.com
+            username = "alivelikirk950"; //aliahmetmehmet987654321@yopmail.com
             password = "987654321";
         }
 
+        MyLog logger = new MyLog();
+
+
         //kullanıcı oluşturma
         CreateMember t1 = new CreateMember();
-        t1.create(username, password);
+        logger = t1.create(username, password, logger);
 
-//        //login olma
-//        LoginMember t2 = new LoginMember();
-//        t2.login(username, password);
+
+        //login olma
+        LoginMember t2 = new LoginMember();
+        logger = t2.login(username, password, logger);
 //
-//        // kayıtlı kullanıcıyı tekrar oluşturma
-//        CreateMember t3 = new CreateMember();
-//        t3.create(username, password);
+        // kayıtlı kullanıcıyı tekrar oluşturma
+        CreateMember t3 = new CreateMember();
+        logger = t3.create(username, password, logger);
 
+        new ReportLogs().executeReports(logger);
     }
 
 
