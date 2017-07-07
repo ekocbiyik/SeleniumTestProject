@@ -12,6 +12,12 @@
     <dependencies>
 
         <dependency>
+            <groupId>com.github.detro.ghostdriver</groupId>
+            <artifactId>phantomjsdriver</artifactId>
+            <version>1.1.0</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>2.53.1</version>
@@ -22,13 +28,6 @@
             <artifactId>extentreports</artifactId>
             <version>2.41.1</version>
         </dependency>
-
-
-        <!--<dependency>-->
-            <!--<groupId>org.seleniumhq.selenium</groupId>-->
-            <!--<artifactId>selenium-htmlunit-driver</artifactId>-->
-            <!--<version>2.52.0</version>-->
-        <!--</dependency>-->
 
         <dependency>
             <groupId>junit</groupId>

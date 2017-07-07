@@ -1,1 +1,0 @@
-yeni firmware güncellemesi gelince bu klasörde ilgili yere koy, .superonline> kiosk altýndaki firmwares folder'ý ile deðiþtir
